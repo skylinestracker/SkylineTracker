@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 app.use(express.json({ limit: '1mb' }));
 
-const TELEGRAM_TOKEN = 'YOUR_BOT_TOKEN';
-const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID';
+const TELEGRAM_TOKEN = '8744030589:AAGZkvTlFfpfp9m_S0Rr6Rf3NpPmr46o76M';
+const TELEGRAM_CHAT_ID = '8691443497';
 
 async function sendTelegram(text) {
   const maxLen = 4000;
